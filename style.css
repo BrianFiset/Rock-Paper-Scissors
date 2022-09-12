@@ -1,0 +1,35 @@
+body {
+    background-color: grey;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.btn-img {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.game-result {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0 0 0;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 16px 0;
+}
+
+.new-game {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    color: aqua;
+}

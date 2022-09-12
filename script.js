@@ -15,9 +15,10 @@ const btn = document.querySelectorAll('button')
 const scissor = document.querySelector('.scissors')
 const paper = document.querySelector('.paper')
 const rock = document.querySelector('.rock')
-const gameResult = document.querySelector('.game_result')
-const playerScoreText = document.querySelector('.player_score')
-const computerScoreText = document.querySelector('.computer_score')
+const gameResult = document.querySelector('.game-result')
+const playerScoreText = document.querySelector('.player-score')
+const computerScoreText = document.querySelector('.computer-score')
+const newGameBtn = document.querySelector('.new-game')
 
 function playRound(computerSelection, playerSelection) {
     playerSelection = playerSelection.toLocaleLowerCase()
@@ -44,14 +45,22 @@ function playRound(computerSelection, playerSelection) {
 function playButton(choice) {
     playRound(getComputerChoice(),choice)
 
+    if (playerScore >= 5 || computerScore >= 5){return}
+
     if (playerWin === true) {
-        gameResult.textContent = "You Win"
+        gameResult.textContent = "Result: You Win"
         playerScore += 1
     } else if (computerWin === true) {
-        gameResult.textContent = "You Lose"
+        gameResult.textContent = "Result: You Lose"
         computerScore += 1
-    } else {
-        gameResult.textContent = 'Tied'
+    } else  if(playerWin === false && computerWin === false) {
+        gameResult.textContent = 'Result: Tied'
+    }
+
+    if(playerScore === 5){
+        gameResult.textContent = "You Win The Game"
+    } else if (computerScore === 5) {
+        gameResult.textContent = "The Computer Won The game"
     }
     playerScoreText.textContent = 'Player: ' + playerScore
     computerScoreText.textContent = 'Computer: ' + computerScore
@@ -66,3 +75,13 @@ paper.addEventListener('click', function(e){
 rock.addEventListener('click', function(e){
     playButton('rock')
 })
+
+function newGame() {
+    playerScore === 0
+    computerScore === 0
+    playerScoreText.textContent = 'Player: '
+    computerScoreText.textContent = 'Computer: '
+    gameResult.textContent = 'Status: '
+}
+
+newGameBtn.addEventListener('click', newGame)
